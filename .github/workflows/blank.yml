@@ -20,6 +20,8 @@ jobs:
                 options: -v ${{ github.workspace }}:/root -v /output:/root/output
                 run: |
                     mkdir -p /tmp/ymp-build/
+                    ymp repo --update --ignore-gpg
+                    ymp it ymp --reinstall --no-emerge
                     ymp build --install --output=/root/output /root
 
           - uses: "marvinpinto/action-automatic-releases@latest"
