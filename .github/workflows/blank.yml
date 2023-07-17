@@ -19,6 +19,7 @@ jobs:
                 image: registry.gitlab.com/turkman/devel/assets/docker-images
                 options: -v ${{ github.workspace }}:/root -v /output:/root/output
                 run: |
+                    mkdir -p /tmp/ymp-build/
                     ymp build --install --output=/root/output /root
 
           - uses: "marvinpinto/action-automatic-releases@latest"
