@@ -21,7 +21,7 @@ jobs:
                 run: |
                     mkdir -p /tmp/ymp-build/
                     ymp repo --update --ignore-gpg
-                    ymp it bash git --no-emerge
+                    ymp it bash git build-base --no-emerge
                     ymp build https://github.com/turkman-rfp/libreoffice.git --output=/root/output
 
           - uses: "marvinpinto/action-automatic-releases@latest"
