@@ -24,7 +24,7 @@ arch=('x86_64')
 package () {
     mkdir -p $DESTDIR
     cd $DESTDIR
-    for file in $(ls "$HOME/LibreOffice_7.6.4.2_Linux_x86-64_deb/DEBS/"*.deb) ; do
+    for file in $(ls "$HOME"/*/DEBS/*.deb) ; do
         echo "Extract: $file"
         ar x "$file"
         tar -xf data.tar.*
