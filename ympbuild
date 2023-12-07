@@ -13,6 +13,7 @@ depends=()
 makedepends=()
 group=()
 uses=()
+unsafe=1
 arch=('x86_64')
 # find latest version
 #
@@ -28,18 +29,6 @@ package () {
         ar x "$file"
         tar -xf data.tar.*
         rm -rf control.tar.* debian-binary data.tar.*
-    done
-    # fix symlink
-    rm -f $DESTDIR/usr/local/bin/libreoffice7.5
-    rm -f $DESTDIR/usr/share/applications/libreoffice7.5-startcenter.desktop
-    rm -f $DESTDIR/usr/share/applications/libreoffice7.5-xsltfilter.desktop
-    mkdir -p $DESTDIR/usr/bin/
-    ln -s ../../opt/libreoffice7.5/program/soffice $DESTDIR/usr/bin/libreoffice7.5
-    for prog in base impress draw calc writer math ; do
-        if ls $DESTDIR/usr/share/applications/libreoffice7.5-$prog.desktop  ; then
-            rm -f $DESTDIR/usr/share/applications/libreoffice7.5-$prog.desktop
-            ln -s ../../../opt/libreoffice7.5/share/xdg/$prog.desktop $DESTDIR/usr/share/applications/libreoffice7.5-$prog.desktop
-        fi
     done
     rm -rf $DESTDIR/usr/share/mimeinfo
 }
