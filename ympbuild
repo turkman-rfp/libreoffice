@@ -31,4 +31,6 @@ package () {
         rm -rf control.tar.* debian-binary data.tar.*
     done
     rm -rf $DESTDIR/usr/share/mimeinfo
+    cp -prvf $DESTDIR/usr/local/* $DESTDIR/usr/
+    rm -rf $DESTDIR/usr/local
 }
